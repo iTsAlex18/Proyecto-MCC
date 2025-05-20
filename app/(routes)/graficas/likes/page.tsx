@@ -26,7 +26,19 @@ const GraficasLikes = () => {
   const [actualizado, setActualizado] = useState(false);
   const [key, setKey] = useState(0);
   const [error, setError] = useState("");
+  const [username, setUsername] = useState<string | null>(null);
   const chartRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      const user = JSON.parse(userData);
+      const name = user?.username || user?.documentId || "Usuario";
+      setUsername(name);
+    } else {
+      setUsername("Usuario");
+    }
+  }, []);
 
   const cargarDatos = () => {
     setError("");
@@ -41,8 +53,6 @@ const GraficasLikes = () => {
     })
       .then((res) => (res.ok ? res.json() : Promise.reject("No autorizado")))
       .then((res) => {
-        console.log("📦 Datos recibidos:", res);
-
         const resumen: Record<string, number> = {};
         res.months.forEach((mes: string, i: number) => {
           resumen[mes] = res.counts[i];
@@ -87,10 +97,12 @@ const GraficasLikes = () => {
   };
 
   useEffect(() => {
-    cargarDatos();
-    const intervalo = setInterval(cargarDatos, 60000);
-    return () => clearInterval(intervalo);
-  }, [mesSeleccionado]);
+    if (username) {
+      cargarDatos();
+      const intervalo = setInterval(cargarDatos, 60000);
+      return () => clearInterval(intervalo);
+    }
+  }, [mesSeleccionado, username]);
 
   const exportPDF = () => {
     if (!chartRef.current) return;
@@ -108,8 +120,14 @@ const GraficasLikes = () => {
     });
   };
 
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const username = user?.username || user?.documentId || "Usuario";
+  // Bloqueo de acceso hasta que sepamos el usuario
+  if (username === null) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-xl font-medium text-gray-600">
+        Cargando datos de usuario...
+      </div>
+    );
+  }
 
   if (username !== "Perlagabmerazc") {
     return (
@@ -199,6 +217,4 @@ const GraficasLikes = () => {
 };
 
 export default GraficasLikes;
-
-
 
