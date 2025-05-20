@@ -32,7 +32,7 @@ export default function AuthCallbackPage() {
     };
 
     fetchUser();
-  }, [searchParams]);
+  }, [searchParams, router]);
 
   return <p className="text-center mt-20 text-lg">Procesando... 🔄</p>;
 }

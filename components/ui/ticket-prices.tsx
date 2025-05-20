@@ -11,7 +11,7 @@ const ticketOptions = [
 ];
 
 export default function TicketPrice() {
-  const [selectedTicket, setSelectedTicket] = useState(null);
+  const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
 
   return (
     <div className="w-full max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

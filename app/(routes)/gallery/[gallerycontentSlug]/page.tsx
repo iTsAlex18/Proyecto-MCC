@@ -10,7 +10,7 @@ import { useState, useRef } from "react"
 export default function Page() {
 const params = useParams()
 const { gallerycontentSlug } = params
-const { result, loading }: ResponseType = useGetGalleriesRooms(gallerycontentSlug)
+const { result, loading }: ResponseType = useGetGalleriesRooms(gallerycontentSlug ?? "")
 
 const [selectedImage, setSelectedImage] = useState<string | null>(null)
 const dialogRef = useRef<HTMLDialogElement | null>(null)
@@ -30,7 +30,15 @@ if (loading || !result) return <p className="text-center py-10">Cargando sala...
 return (
     <ContainerPage>
         <div className="max-w-6xl py-8 mx-auto sm:py-16 sm:px-6 md:px-12">
-            {result.map((room) => {
+            {result.map((room: {
+                id: string | number
+                headerImage?: { url?: string }
+                image?: { url?: string }[]
+                roomTitle?: string
+                contentTitle?: string
+                description?: string
+                images?: { url: string }[]
+            }) => {
                 const headerImageUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}${room.headerImage?.url}`
                 const sideImageUrl = room.image?.[0]?.url
                     ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${room.image[0].url}`
@@ -80,7 +88,7 @@ return (
                                     Galería
                                 </h3>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    {room.images.map((img, index) => (
+                                    {room.images.map((img: { url: string }, index: number) => (
                                         <div
                                             key={index}
                                             className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-[1.03] cursor-pointer"

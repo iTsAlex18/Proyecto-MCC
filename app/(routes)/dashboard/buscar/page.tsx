@@ -2,9 +2,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+type Post = {
+  id: number;
+  title: string;
+  content?: string;
+};
+
 const BuscarPage = () => {
   const [query, setQuery] = useState("");
-  const [resultados, setResultados] = useState<any[]>([]);
+  const [resultados, setResultados] = useState<Post[]>([]);
   const [buscando, setBuscando] = useState(false);
   const router = useRouter();
 

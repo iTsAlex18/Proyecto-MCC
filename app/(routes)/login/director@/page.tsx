@@ -132,6 +132,15 @@ const LoginDirectora = () => {
             </button>
           </form>
 
+          <button
+            type="button"
+            className="mt-4 text-blue-600 underline hover:text-blue-800 transition"
+            onClick={() => setIsRegistering((prev) => !prev)}
+          >
+            {isRegistering
+              ? "¿Ya tienes cuenta? Inicia sesión"
+              : "¿No tienes cuenta? Regístrate"}
+          </button>
         </div>
       </div>
     </ContainerPage>
