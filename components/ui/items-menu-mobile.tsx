@@ -1,4 +1,4 @@
-import { Newspaper, ThumbsUp, User, Menu } from "lucide-react";
+import { Newspaper, ChartNoAxesCombined, CircleUserRound, Menu } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import ToggleTheme from "./toggle-theme";
 import Link from "next/link";
@@ -56,18 +56,18 @@ const ItemsMenuMobile = () => {
             Blog
           </Link>
           <Link
-            href="/graficas"
+            href="/login"
             className="flex items-center text-lg text-gray-800 dark:text-gray-200 hover:text-secondary transition-all"
           >
-            <ThumbsUp className="w-5 h-5 mr-2" strokeWidth="1.2" />
-            Me gusta
+            <CircleUserRound className="w-5 h-5 mr-2" strokeWidth="1.2" />
+            Perfil
           </Link>
           <Link
             href="/login"
             className="flex items-center text-lg text-gray-800 dark:text-gray-200 hover:text-secondary transition-all"
           >
-            <User className="w-5 h-5 mr-2" strokeWidth="1.2" />
-            Perfil
+            <ChartNoAxesCombined className="w-5 h-5 mr-2" strokeWidth="1.2" />
+            Gráficas
           </Link>
           <div className="pt-2">
             <ToggleTheme />

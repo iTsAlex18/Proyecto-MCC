@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import GraficasLikes from "./likes/page";
 import GraficasClics from "./clics/page";
+import TopSecciones from "./top5/TopSecciones";
 
 const GraficasMuseo = () => {
   const router = useRouter();
@@ -35,6 +36,7 @@ const GraficasMuseo = () => {
       <div className="max-w-4xl mx-auto space-y-12">
         <GraficasLikes />
         <GraficasClics />
+        <TopSecciones />
       </div>
     </div>
   );
