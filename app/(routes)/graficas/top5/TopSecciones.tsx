@@ -1,8 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 
+type Seccion = {
+  section: string;
+  clicks: number;
+};
+
 const TopSecciones = () => {
-  const [secciones, setSecciones] = useState([]);
+  const [secciones, setSecciones] = useState<Seccion[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
