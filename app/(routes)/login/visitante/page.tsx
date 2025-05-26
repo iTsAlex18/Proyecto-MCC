@@ -77,7 +77,7 @@ export default function LoginVisitante() {
               placeholder="Correo electrónico"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="p-3 rounded-lg border border-gray-300 bg-white"
+              className="p-3 rounded-lg border border-gray-300 bg-white text-black"
               required
             />
             <input
@@ -85,7 +85,7 @@ export default function LoginVisitante() {
               placeholder="Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="p-3 rounded-lg border border-gray-300 bg-white"
+              className="p-3 rounded-lg border border-gray-300 bg-white text-black"
               required
             />
 

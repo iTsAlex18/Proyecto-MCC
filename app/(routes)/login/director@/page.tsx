@@ -108,7 +108,7 @@ const LoginDirectora = () => {
                   placeholder="Nombre de usuario o correo"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  className="p-4 border border-gray-300 rounded-lg bg-white/70"
+                  className="p-4 border border-gray-300 rounded-lg bg-white/70 text-black"
                   required
                 />
                 <input
@@ -116,7 +116,7 @@ const LoginDirectora = () => {
                   placeholder="Contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="p-4 border border-gray-300 rounded-lg bg-white/70"
+                  className="p-4 border border-gray-300 rounded-lg bg-white/70 text-black"
                   required
                 />
               </>

@@ -3,6 +3,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { registrarClic } from "@/lib/registrarClic";
 
 const BlogPage = () => {
   type SelectedPost = {
@@ -48,6 +49,8 @@ const BlogPage = () => {
         const parsed = JSON.parse(user);
         setVisitorName(parsed.username || "");
         setAuthorized(true);
+        // ✅ Aquí registramos el clic
+      registrarClic("Blog del museo");
         const liked = JSON.parse(localStorage.getItem("likedPosts") || "[]");
         setLikedPosts(liked);
       } catch (e) {

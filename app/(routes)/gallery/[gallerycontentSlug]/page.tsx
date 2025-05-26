@@ -5,6 +5,8 @@ import { Separator } from "@/components/ui/separator"
 import { ResponseType } from "@/types/response"
 import { useParams } from "next/navigation"
 import ContainerPage from "@/components/container-page"
+import { registrarClic } from "@/lib/registrarClic";
+import { useEffect } from "react";
 import { useState, useRef } from "react"
 
 export default function Page() {
@@ -14,6 +16,12 @@ const { result, loading }: ResponseType = useGetGalleriesRooms(gallerycontentSlu
 
 const [selectedImage, setSelectedImage] = useState<string | null>(null)
 const dialogRef = useRef<HTMLDialogElement | null>(null)
+
+useEffect(() => {
+  if (gallerycontentSlug) {
+    registrarClic(`Sala - ${gallerycontentSlug}`);
+  }
+}, [gallerycontentSlug]);
 
 const openModal = (imgUrl: string) => {
     setSelectedImage(imgUrl)
