@@ -21,7 +21,7 @@ const Introduction = () => {
         </h1>
 
         <p className="mx-auto mb-2 text-xl md:mx-0 md:mb-8 text-white" style={{ textAlign: 'justify' }}>
-          El edificio que aloja al museo fue originalmente la Cárcel de Cananea de 1903 a 1979. En el 19 de noviembre de 1980 es inaugurado y en el 1981 es declarado Monumento Histórico Nacional por el INAH.
+          El edificio que aloja al museo fue originalmente la Cárcel de Cananea de 1903 a 1979. En 19 de noviembre de 1980 es inaugurado y en 1981 es declarado Monumento Histórico Nacional por el INAH.
         </p>
 
         <div className="flex sticky z-[1000] items-center justify-center gap-3 md:justify-start md:gap-10">
