@@ -82,7 +82,7 @@ export default MenuList
 const components: { title: string; href: string; }[] = [
   {
     title: "Facebook",
-    href: "https://www.facebook.com/MuseoLuchaObrera/",
+    href: "https://www.facebook.com/MuseoLuchaObrera/?locale=es_LA",
   },
   {
     title: "Youtube",
