@@ -68,7 +68,7 @@ export default function LoginVisitante() {
                 placeholder="Nombre"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="p-3 rounded-lg border border-gray-300 bg-white"
+                className="p-3 rounded-lg border border-gray-300 bg-white text-black"
                 required
               />
             )}
