@@ -20,7 +20,7 @@ export default function LoginVisitante() {
       : { identifier: email, password };
 
     try {
-      const res = await fetch(`http://localhost:1337/api/auth/local/${endpoint}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

@@ -1,1 +1,1 @@
-GET http://localhost:1337
+GET https://proyecto-mcc-backend.onrender.com

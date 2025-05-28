@@ -18,7 +18,7 @@ const LoginDirectora = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:1337/api/auth/local", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ identifier, password }),
@@ -44,7 +44,7 @@ const LoginDirectora = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:1337/api/auth/local/register", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password: regPassword }),

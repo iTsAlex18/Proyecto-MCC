@@ -1,7 +1,7 @@
 // lib/registrarClic.ts
 export async function registrarClic(section: string) {
   try {
-    await fetch("http://localhost:1337/api/section-clicks/register", {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/section-clicks/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ section }),
