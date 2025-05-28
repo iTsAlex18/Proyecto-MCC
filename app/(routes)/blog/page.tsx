@@ -63,7 +63,7 @@ const BlogPage = () => {
   }, []);
 
   const fetchPosts = () => {
-    fetch("http://localhost:1337/api/posts-con-likes")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts-con-likes`)
       .then((res) => res.json())
       .then((data) => {
         setPosts(data || []);
@@ -93,7 +93,7 @@ const handleToggleLike = async (postId: number) => {
   }
 
   try {
-    const res = await fetch(`http://localhost:1337/api/likes`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/likes`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -163,7 +163,7 @@ const handleToggleLike = async (postId: number) => {
 
           const imageUrl =
             media && media.length > 0
-              ? `http://localhost:1337${media[0].formats?.medium?.url || media[0].url}`
+              ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${media[0].formats?.medium?.url || media[0].url}`
               : null;
 
           const formattedDate = new Date(createdAt).toLocaleDateString("es-ES", {

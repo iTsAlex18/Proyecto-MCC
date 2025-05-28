@@ -21,7 +21,7 @@ const GraficasClics = () => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/section-clicks/resumen")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/section-clicks/resumen`)
       .then((res) => res.json())
       .then((data) => {
         if (!Array.isArray(data)) throw new Error("Datos inválidos");

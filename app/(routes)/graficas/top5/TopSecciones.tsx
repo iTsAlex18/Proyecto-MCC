@@ -11,7 +11,7 @@ const TopSecciones = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/section-clicks/top5")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/section-clicks/top5`)
       .then((res) => res.json())
       .then((data) => {
         setSecciones(data);

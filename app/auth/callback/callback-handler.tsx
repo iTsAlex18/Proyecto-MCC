@@ -15,7 +15,7 @@ export default function AuthCallbackHandler() {
       if (!token) return;
 
       try {
-        const res = await fetch("http://localhost:1337/api/users/me", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

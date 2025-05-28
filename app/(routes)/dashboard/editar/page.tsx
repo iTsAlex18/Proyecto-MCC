@@ -18,7 +18,7 @@ const EditarArticulo = () => {
   const router = useRouter(); // 👈 Usa useRouter
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/posts?populate=*")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts?populate=*`)
       .then((res) => res.json())
       .then((data) => setArticulos(data.data))
       .catch((err) => console.error("❌ Error al cargar artículos:", err));
@@ -36,7 +36,7 @@ const EditarArticulo = () => {
         const formData = new FormData();
         formData.append("files", nuevaMedia);
 
-        const upload = await fetch("http://localhost:1337/api/posts?populate=*", {
+        const upload = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts?populate=*`, {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
           body: formData,
@@ -51,7 +51,7 @@ const EditarArticulo = () => {
       if (nuevoContenido) camposActualizados.content = nuevoContenido;
       if (mediaId) camposActualizados.media = [mediaId];
 
-      const res = await fetch(`http://localhost:1337/api/posts/${documentId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts/${documentId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

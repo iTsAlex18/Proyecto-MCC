@@ -21,7 +21,7 @@ const BuscarPage = () => {
     setBuscando(true);
     try {
       const res = await fetch(
-        `http://localhost:1337/api/posts?filters[$or][0][title][$containsi]=${encodeURIComponent(query)}&filters[$or][1][content][$containsi]=${encodeURIComponent(query)}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts?filters[$or][0][title][$containsi]=${encodeURIComponent(query)}&filters[$or][1][content][$containsi]=${encodeURIComponent(query)}`
       );
       const data = await res.json();
       setResultados(data.data || []);

@@ -48,7 +48,7 @@ const GraficasLikes = () => {
       return;
     }
 
-    fetch("http://localhost:1337/api/likes/resumen-mensual", {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/likes/resumen-mensual`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => (res.ok ? res.json() : Promise.reject("No autorizado")))

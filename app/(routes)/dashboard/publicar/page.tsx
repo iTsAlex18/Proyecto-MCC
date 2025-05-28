@@ -19,7 +19,7 @@ const PublicarPage = () => {
       if (media) {
         const form = new FormData();
         form.append("files", media);
-        const upload = await fetch("http://localhost:1337/api/upload", {
+        const upload = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/upload`, {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
           body: form,
@@ -28,7 +28,7 @@ const PublicarPage = () => {
         mediaId = result?.[0]?.id;
       }
 
-      const post = await fetch("http://localhost:1337/api/posts", {
+      const post = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

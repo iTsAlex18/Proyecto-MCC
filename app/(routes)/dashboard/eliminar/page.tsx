@@ -16,7 +16,7 @@ const EliminarPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/posts")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts`)
       .then((res) => res.json())
       .then((data) => setArticulos(data.data))
       .catch((err) => console.error("❌ Error al cargar artículos:", err));
@@ -31,7 +31,7 @@ const EliminarPage = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:1337/api/posts/${documentId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts${documentId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ const EliminarPage = () => {
       if (res.ok) {
         alert(`✅ Artículo con Document ID ${documentId} eliminado correctamente.`);
         setDocumentId("");
-        const refresh = await fetch("http://localhost:1337/api/posts");
+        const refresh = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts`);
         const updated = await refresh.json();
         setArticulos(updated.data);
       } else {
