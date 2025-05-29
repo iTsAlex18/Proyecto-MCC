@@ -44,7 +44,7 @@ const MenuList =() => {
               <ListItem href="/schedules" title="Horarios y Tarifas">
               Aquí te daremos más información sobre nuestros horarios y tarifas.
               </ListItem>
-              <ListItem href="/index" title="Índice">
+              <ListItem href="/catalog" title="Índice">
               Conocerás toda nuestra galería e información que tienen nuestras salas y celdas.
               </ListItem>
             </ul>

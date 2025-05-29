@@ -4,7 +4,7 @@ import { Separator } from "./separator";
 const dataFooter = [
   { id: 1, name: "Visítanos", link: "/location" },
   { id: 2, name: "Horarios", link: "/schedules" },
-  { id: 3, name: "Índice", link: "/index" },
+  { id: 3, name: "Índice", link: "/catalog" },
   { id: 4, name: "Blog", link: "#" },
   { id: 5, name: "Política de Privacidad", link: "/privpoli" },
 ];

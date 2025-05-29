@@ -36,7 +36,7 @@ const ItemsMenuMobile = () => {
             Horarios y Tarifas
           </Link>
           <Link
-            href="/index"
+            href="/catalog"
             className="block text-lg text-gray-800 dark:text-gray-200 hover:text-secondary transition-all"
           >
             Índice
