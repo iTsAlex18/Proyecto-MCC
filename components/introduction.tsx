@@ -28,7 +28,7 @@ const Introduction = () => {
           <a href="/location" className="px-3 py-2 my-2 transition-all border-2 cursor-pointer text-md w-fit border-white rounded-xl hover:shadow-xl hover:shadow-white/50 text-white">
             Ven a visitarnos
           </a>
-          <a href="/index" className="px-3 py-2 my-5 transition-all border-2 cursor-pointer text-md w-fit border-secondary rounded-xl hover:shadow-xl hover:shadow-secondary text-white">
+          <a href="/catalog" className="px-3 py-2 my-5 transition-all border-2 cursor-pointer text-md w-fit border-secondary rounded-xl hover:shadow-xl hover:shadow-secondary text-white">
             Conocer más
           </a>
         </div>
