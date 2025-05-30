@@ -4,6 +4,7 @@ import { useGetGalleries } from "@/api/getGalleries";
 import Link from "next/link";
 import { ResponseType } from "@/types/response";
 import { GalleryType } from "@/types/gallery";
+import StrapiImage from "@/components/StrapiImage";
 
 const ChooseGallery = () => {
   const { result, loading }: ResponseType = useGetGalleries();
@@ -26,8 +27,8 @@ const ChooseGallery = () => {
               href={`/gallery/${gallery.slug}`}
               className="relative block overflow-hidden transition-transform duration-300 transform bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1"
             >
-              <img
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${gallery.mainImage.url}`}
+              <StrapiImage
+                src={gallery.mainImage.url}
                 alt={gallery.galleryName}
                 className="object-cover w-full h-64 transition-transform duration-300 ease-in-out hover:scale-105"
               />
