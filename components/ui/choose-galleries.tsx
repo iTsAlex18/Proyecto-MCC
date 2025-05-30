@@ -13,7 +13,6 @@ function getImageUrl(url?: string): string {
 
 const ChooseGallery = () => {
   const { result, loading }: ResponseType = useGetGalleries();
-  console.log(result);
 
   return (
     <div className="max-w-7xl py-12 mx-auto px-6 sm:px-12 lg:px-24">
@@ -25,10 +24,11 @@ const ChooseGallery = () => {
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {!loading &&
           result?.map((gallery: GalleryType) => {
-            const imageUrl = getImageUrl(gallery.mainImage?.url);
+            const imageUrl = getImageUrl(gallery.mainImage?.url); // ✅ Si es plana, esto es correcto
+            console.log("mainImage URL:", imageUrl);
             return (
               <Link
-                key={gallery.documentId}
+                key={gallery.documentId || gallery.id}
                 href={`/gallery/${gallery.slug}`}
                 className="relative block overflow-hidden transition-transform duration-300 transform bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1"
               >
@@ -53,3 +53,4 @@ const ChooseGallery = () => {
 };
 
 export default ChooseGallery;
+
