@@ -8,6 +8,7 @@ import ContainerPage from "@/components/container-page"
 import { registrarClic } from "@/lib/registrarClic";
 import { useEffect } from "react";
 import { useState, useRef } from "react"
+import StrapiImage from "@/components/StrapiImage";
 
 export default function Page() {
 const params = useParams()
@@ -47,15 +48,15 @@ return (
                 description?: string
                 images?: { url: string }[]
             }) => {
-                const headerImageUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}${room.headerImage?.url}`
+                const headerImageUrl = `${room.headerImage?.url}`
                 const sideImageUrl = room.image?.[0]?.url
-                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${room.image[0].url}`
+                    ? `${room.image[0].url}`
                     : null
 
                 return (
                     <div key={room.id} className="py-10">
                         {room.headerImage?.url && (
-                            <img
+                            <StrapiImage
                                 src={headerImageUrl}
                                 alt="Imagen de encabezado"
                                 className="w-full max-h-[500px] sm:max-h-[700px] object-cover rounded-lg mb-10 shadow-xl"
@@ -70,7 +71,7 @@ return (
 
                         <div className={`grid grid-cols-1 gap-6 items-center mt-10 md:grid-cols-${sideImageUrl ? '2' : '1'}`}>
                             {sideImageUrl && (
-                                <img
+                                <StrapiImage
                                     src={sideImageUrl}
                                     alt="Imagen lateral"
                                     className="w-full max-h-[1200px] object-cover rounded-xl overflow-hidden shadow-lg"
@@ -100,11 +101,11 @@ return (
                                         <div
                                             key={index}
                                             className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-[1.03] cursor-pointer"
-                                            onClick={() => openModal(`${process.env.NEXT_PUBLIC_BACKEND_URL}${img.url}`)}
+                                            onClick={() => openModal(`${img.url}`)}
                                         >
                                             <div className="aspect-[1] bg-gray-100">
-                                                <img
-                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${img.url}`}
+                                                <StrapiImage
+                                                    src={`${img.url}`}
                                                     alt={`Imagen ${index + 1}`}
                                                     className="w-full h-full object-cover"
                                                 />
@@ -141,7 +142,7 @@ return (
                     &times;
                 </button>
                 {selectedImage && (
-                    <img
+                    <StrapiImage
                     src={selectedImage}
                     alt="Imagen ampliada"
                     className="w-full h-auto max-h-[80vh] object-contain mx-auto rounded-md"/>
