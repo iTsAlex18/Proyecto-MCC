@@ -16,7 +16,7 @@ const EliminarPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts/`)
       .then((res) => res.json())
       .then((data) => setArticulos(data.data))
       .catch((err) => console.error("❌ Error al cargar artículos:", err));
