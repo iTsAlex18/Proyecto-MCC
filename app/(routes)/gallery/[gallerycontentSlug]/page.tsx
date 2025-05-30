@@ -84,7 +84,7 @@ return (
                                         {room.contentTitle}
                                     </h3>
                                 )}
-                                <pre className="whitespace-pre-wrap text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed text-center font-serif bg-gradient-to-br from-amber-200 to-rose-100 px-6 py-8 rounded-xl shadow-inner">
+                                <pre className=" text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed text-center font-serif bg-gradient-to-br from-amber-200 to-rose-100 px-6 py-8 rounded-xl shadow-inner">
                                     {room.description}
                                 </pre>
                             </div>
