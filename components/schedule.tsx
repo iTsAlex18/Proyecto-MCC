@@ -15,7 +15,8 @@ const storeHours = [
 ];
 
 const MuseoSchedule = () => {
-  const currentDay = dayjs().format('dddd').toLowerCase();
+  const currentDay = dayjs().locale('es').format('dddd').toLowerCase();
+
 
   return (
     <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
