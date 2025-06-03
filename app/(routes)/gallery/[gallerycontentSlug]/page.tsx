@@ -80,7 +80,7 @@ return (
 
                             <div className={`px-4 sm:px-6 lg:px-12 ${!sideImageUrl ? 'md:col-span-2' : ''}`}>
                                 {room.contentTitle && (
-                                    <h3 className="text-xl sm:text-2xl font-semibold text-rose-900 mb-4 text-center md:text-left">
+                                    <h3 className="whitespace-pre-wrap text-xl sm:text-2xl font-semibold text-rose-900 mb-4 text-center md:text-left">
                                         {room.contentTitle}
                                     </h3>
                                 )}
