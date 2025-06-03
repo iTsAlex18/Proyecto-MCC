@@ -1,8 +1,15 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/es';
 
-dayjs.locale('es');
+const dayMap: Record<'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday', string> = {
+  monday: 'lunes',
+  tuesday: 'martes',
+  wednesday: 'miércoles',
+  thursday: 'jueves',
+  friday: 'viernes',
+  saturday: 'sábado',
+  sunday: 'domingo',
+};
 
 const storeHours = [
   { day: 'lunes', open: null, close: null },
@@ -15,12 +22,12 @@ const storeHours = [
 ];
 
 const MuseoSchedule = () => {
-  const currentDay = dayjs().locale('es').format('dddd').toLowerCase();
-
+  const currentDay = dayMap[dayjs().format('dddd').toLowerCase() as keyof typeof dayMap];
 
   return (
     <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-rose-600 mb-8"> 
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-rose-600 mb-8">
+        Nuestros <span role="img" aria-label="reloj">⏰</span> Horarios.
       </h2>
 
       <div className="grid grid-cols-1 gap-4">
@@ -52,3 +59,4 @@ const MuseoSchedule = () => {
 };
 
 export default MuseoSchedule;
+
