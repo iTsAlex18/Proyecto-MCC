@@ -19,7 +19,7 @@ export default function LoginSelector() {
             className="flex items-center justify-center gap-3 w-full px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-lg text-lg font-semibold transition"
           >
             <ShieldCheck className="w-6 h-6" />
-            Iniciar sesión como Directora del Museo
+            Iniciar sesión como Director@ del Museo
           </button>
 
           <button

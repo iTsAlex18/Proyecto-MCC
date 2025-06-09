@@ -54,7 +54,7 @@ const Dashboard = () => {
   {/* Contenido principal */}
   <div className="flex flex-col items-center justify-center text-center flex-grow">
     <h2 className="text-3xl md:text-5xl font-extrabold text-gray-800 mb-4">
-      ¡Bienvenida, {user.username}!
+      ¡Bienvenid@, {user.username}!
     </h2>
     <p className="text-base md:text-xl text-gray-700 max-w-2xl mb-10 px-2">
       Administra el museo, exposiciones y artistas desde tu panel personalizado.
