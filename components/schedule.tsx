@@ -161,10 +161,7 @@ const MuseoSchedule: React.FC = () => {
 
   return (
     <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Título principal */}
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-rose-600 mb-8">
-        Nuestros <span role="img" aria-label="reloj">⏰</span> Horarios.
-      </h2>
+
 
       {/* Información de estado actual */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8">
