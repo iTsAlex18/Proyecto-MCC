@@ -19,7 +19,7 @@ export const dataCarouselTop = [
     },
     {
         id: 3,
-        title: "Lo Nuevo que agregamos es blog",
+        title: "Lo Nuevo que agregamos es el blog",
         description: "Nuestro blog conoceras todas las novedades y eventos de nuestro museo.",
         link: "#",
     },
