@@ -7,24 +7,18 @@ import Autoplay from 'embla-carousel-autoplay'
 export const dataCarouselTop = [
     {
         id: 1,
-        title: "Aunque los dos primeros dias de la semana no abrimos el museo",
-        description: "Nuestra pagina web, estara disponible las 24 horas del dia.",
-        link: "#",
-    },
-    {
-        id: 2,
         title: "Primera Pagina web de Museo",
         description: "Nuestra primera pagina web, conoce todas las novedades.",
         link: "#",
     },
     {
-        id: 3,
+        id: 2,
         title: "Redes Sociales",
         description: "Ven a Visitar nuestras redes sociales y enterate de todas las novedades.",
         link: "#",
     },
     {
-        id: 4,
+        id: 3,
         title: "Lo Nuevo que agregamos es blog",
         description: "Nuestro blog conoceras todas las novedades y eventos de nuestro museo.",
         link: "#",
