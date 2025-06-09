@@ -168,8 +168,9 @@ const MuseoSchedule: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
           {/* Hora actual */}
           <div className="space-y-2">
+            <span className="mr-1">🕒</span>
             <div className="text-sm text-gray-500">Hora actual</div>
-            <div className="font-semibold text-lg">
+            <div className="font-semibold text-lg text-black">
               {currentTime ? currentTime.time : '--:--'}
             </div>
             <div className="text-xs text-gray-400">
@@ -199,8 +200,9 @@ const MuseoSchedule: React.FC = () => {
 
           {/* Próxima apertura */}
           <div className="space-y-2">
+            <span className="mr-1">🗓️</span>
             <div className="text-sm text-gray-500">Próxima apertura</div>
-            <div className="font-semibold text-sm">
+            <div className="font-semibold text-sm text-black">
               {nextOpening}
             </div>
           </div>
@@ -267,9 +269,9 @@ const MuseoSchedule: React.FC = () => {
           Información importante
         </h3>
         <div className="space-y-2 text-sm text-blue-800">
-          <p>• La última entrada es 30 minutos antes del cierre</p>
-          <p>• Entrada gratuita los domingos por la mañana</p>
-          <p>• Reservas recomendadas para grupos de más de 10 personas</p>
+          <p>• Aunque los dos primeros dias de la semana no abrimos el museo</p>
+          <p>• Nuestra pagina web, estara disponible las 24 horas del dia.</p>
+          <p>• Puedes consultar nuestros eventos en nuestra sección del blog.</p>
         </div>
       </div>
     </div>
