@@ -22,7 +22,7 @@ const BlogPage = () => {
       formats?: {
         medium?: { url: string };
       };
-    }>;
+    }> | null;
     createdAt: string;
     likes?: number;
   };
@@ -155,7 +155,6 @@ const BlogPage = () => {
         🏛️ Blog del Museo
       </h1>
 
-      {/* ✅ Alerta de nuevo post por la directora */}
       <div className="max-w-4xl mx-auto">
         <AlertaNuevoPost />
       </div>
@@ -166,7 +165,7 @@ const BlogPage = () => {
 
           const imageUrl =
             media && media.length > 0
-              ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${media[0].formats?.medium?.url || media[0].url}`
+              ? media[0].formats?.medium?.url || media[0].url
               : null;
 
           const formattedDate = new Date(createdAt).toLocaleDateString("es-ES", {
