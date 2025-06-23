@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { registrarClic } from "@/lib/registrarClic";
+import AlertaNuevoPost from "@/components/AlertaNuevoPost";
 
 const BlogPage = () => {
   type SelectedPost = {
@@ -49,8 +48,7 @@ const BlogPage = () => {
         const parsed = JSON.parse(user);
         setVisitorName(parsed.username || "");
         setAuthorized(true);
-        // ✅ Aquí registramos el clic
-      registrarClic("Blog del museo");
+        registrarClic("Blog del museo");
         const liked = JSON.parse(localStorage.getItem("likedPosts") || "[]");
         setLikedPosts(liked);
       } catch (e) {
@@ -84,45 +82,45 @@ const BlogPage = () => {
     return () => window.removeEventListener("keydown", escHandler);
   }, []);
 
-const handleToggleLike = async (postId: number) => {
-  const token = localStorage.getItem("visitante_token");
-  if (!token) {
-    alert("Debes iniciar sesión para dar like.");
-    router.push("/login");
-    return;
-  }
-
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/likes`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ postId }),
-    });
-
-    if (!res.ok) {
-      const error = await res.json();
-      console.error("❌ Error al hacer like:", error);
-      alert("No se pudo procesar el like.");
+  const handleToggleLike = async (postId: number) => {
+    const token = localStorage.getItem("visitante_token");
+    if (!token) {
+      alert("Debes iniciar sesión para dar like.");
+      router.push("/login");
       return;
     }
 
-    const nuevosLikes = likedPosts.includes(postId)
-      ? likedPosts.filter((id) => id !== postId)
-      : [...likedPosts, postId];
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/likes`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ postId }),
+      });
 
-    setLikedPosts(nuevosLikes);
-    localStorage.setItem("likedPosts", JSON.stringify(nuevosLikes));
-    setLikedPostId(postId);
-    setTimeout(() => setLikedPostId(null), 300);
-    fetchPosts();
-  } catch (err) {
-    console.error("❌ Error:", err);
-    alert("No se pudo procesar el like.");
-  }
-};
+      if (!res.ok) {
+        const error = await res.json();
+        console.error("❌ Error al hacer like:", error);
+        alert("No se pudo procesar el like.");
+        return;
+      }
+
+      const nuevosLikes = likedPosts.includes(postId)
+        ? likedPosts.filter((id) => id !== postId)
+        : [...likedPosts, postId];
+
+      setLikedPosts(nuevosLikes);
+      localStorage.setItem("likedPosts", JSON.stringify(nuevosLikes));
+      setLikedPostId(postId);
+      setTimeout(() => setLikedPostId(null), 300);
+      fetchPosts();
+    } catch (err) {
+      console.error("❌ Error:", err);
+      alert("No se pudo procesar el like.");
+    }
+  };
 
   if (checkingAuth || loading) {
     return (
@@ -153,11 +151,16 @@ const handleToggleLike = async (postId: number) => {
         </button>
       </div>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-800">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6 text-gray-800">
         🏛️ Blog del Museo
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      {/* ✅ Alerta de nuevo post por la directora */}
+      <div className="max-w-4xl mx-auto">
+        <AlertaNuevoPost />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mt-6">
         {posts.map((post) => {
           const { id, title, content, media, createdAt, likes } = post;
 
@@ -257,5 +260,3 @@ const handleToggleLike = async (postId: number) => {
 };
 
 export default BlogPage;
-
-
