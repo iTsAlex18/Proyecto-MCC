@@ -271,7 +271,7 @@ const MuseoSchedule: React.FC = () => {
         <div className="space-y-2 text-sm text-blue-800">
           <p>• Aunque los dos primeros dias de la semana no abrimos el museo</p>
           <p>• Nuestra pagina web, estara disponible las 24 horas del dia.</p>
-          <p>• Puedes consultar nuestros eventos en nuestra sección del blog.(<a href="/blog">Puedes Registrarte Aqui!!</a>)</p>
+          <p>• Puedes consultar nuestros eventos en nuestra sección del blog.(<a href="/blog" className="text-orange-600 hover:text-orange-700 font-semibold transition">¡Puedes Registrarte Aqui!</a>)</p>
         </div>
       </div>
     </div>
