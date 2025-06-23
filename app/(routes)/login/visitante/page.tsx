@@ -20,17 +20,32 @@ export default function LoginVisitante() {
       : { identifier: email, password };
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local/${endpoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local/${endpoint}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
       const data = await res.json();
 
       if (!res.ok) {
         setError(data?.error?.message || "Error inesperado");
+
+        if (isRegistering) {
+          alert(
+            "❌ No se pudo completar el registro: " +
+              (data?.error?.message || "Error desconocido")
+          );
+        }
+
         return;
+      }
+
+      if (isRegistering) {
+        alert("✅ Registro exitoso. ¡Bienvenido/a!");
       }
 
       localStorage.setItem("visitante_token", data.jwt);
@@ -38,6 +53,10 @@ export default function LoginVisitante() {
       router.push("/blog");
     } catch {
       setError("Error de conexión");
+
+      if (isRegistering) {
+        alert("❌ Error de conexión al intentar registrarte.");
+      }
     }
   };
 
@@ -49,7 +68,9 @@ export default function LoginVisitante() {
         style={{ backgroundImage: "url('/museum-visitor.jpg')" }}
       >
         <div className="bg-black/50 backdrop-blur-md text-white text-center p-10 rounded-xl shadow-lg max-w-md">
-          <h1 className="text-4xl font-bold mb-4">Bienvenidos al Blog del Museo</h1>
+          <h1 className="text-4xl font-bold mb-4">
+            Bienvenidos al Blog del Museo
+          </h1>
           <p className="text-lg">Explora, comenta y deja tu huella.</p>
         </div>
       </div>
@@ -89,7 +110,9 @@ export default function LoginVisitante() {
               required
             />
 
-            {error && <p className="text-red-600 text-sm font-semibold">{error}</p>}
+            {error && (
+              <p className="text-red-600 text-sm font-semibold">{error}</p>
+            )}
 
             <button
               type="submit"
@@ -113,4 +136,5 @@ export default function LoginVisitante() {
     </div>
   );
 }
+
 
