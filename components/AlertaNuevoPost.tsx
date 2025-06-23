@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 
 interface Post {
   id: number
@@ -44,20 +43,25 @@ export default function AlertaNuevoPost() {
 
   return (
     <div
-      className="flex items-start gap-4 p-4 mb-6 rounded border border-yellow-400 bg-yellow-100 text-yellow-900 shadow-md animate-fade-in"
+      className="relative flex items-start gap-4 p-4 mb-6 rounded border border-yellow-400 bg-yellow-100 text-yellow-900 shadow-md animate-fade-in"
       role="alert"
     >
+      {/* Botón de cerrar */}
+      <button
+        onClick={() => setShouldShow(false)}
+        className="absolute top-2 right-2 text-yellow-900 hover:text-red-500 text-xl font-bold"
+        aria-label="Cerrar alerta"
+      >
+        ×
+      </button>
+
+      {/* Icono */}
       <div className="text-3xl">📢</div>
 
-      <div>
+      {/* Contenido */}
+      <div className="pr-8">
         <p className="font-bold text-lg">Nuevo artículo publicado por la directora</p>
         <p className="text-sm">{latestPost.title}</p>
-        <Link
-          href={`/blog/${latestPost.id}`}
-          className="inline-block mt-2 text-blue-700 font-medium hover:underline"
-        >
-          Leer artículo →
-        </Link>
       </div>
 
       <style jsx>{`
@@ -78,5 +82,3 @@ export default function AlertaNuevoPost() {
     </div>
   )
 }
-
-
